@@ -1,0 +1,15 @@
+:root{
+    --color-primary: #00ADB5;
+    --color-secondary: #222831;
+    --border-default: solid var(--color-secondary) 2px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--color-secondary);
+    margin: 0;
+    padding: 0;
+}

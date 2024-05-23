@@ -13,7 +13,7 @@ const todoSchema = new mongoose.Schema({
 const todosItem = mongoose.model('todosItem', todoSchema);
 
 
-mongoose.connect('mongodb+srv://Jirru:eQNToZhbNvEtI1cB@cluster0.hibixil.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://Jirru:eQNToZhbNvEtI1cB@cluster0.hibixil.mongodb.net/ToDo?retryWrites=true&w=majority&appName=Cluster0')
 
 
 app.get('/todo', async (req, res) => {
