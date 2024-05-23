@@ -1,10 +1,10 @@
 {
   "name": "todo",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "backend-todo.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./index.js"
+    "start": "nodemon backend-todo.js"
   },
   "keywords": [],
   "author": "",
