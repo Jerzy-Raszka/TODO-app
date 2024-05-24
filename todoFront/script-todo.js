@@ -9,8 +9,12 @@
         .then(data=>{
             console.log(data);
             data.forEach(todosItem => {
-                const markup = `${todosItem.name} ${todosItem.status}`;
+                const markup = `<div><span>${todosItem.name}</span> <input type="checkbox" value="${todosItem.status}" onchange="updateItem('${todosItem._id}')"/></div>`;
                 document.getElementById('todoItems').insertAdjacentHTML('beforeend', markup);
             });
         })
         .catch(err => console.log(err));
+
+const updateItem = (id) => {
+    //TODO update by id here
+}

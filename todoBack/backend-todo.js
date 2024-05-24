@@ -42,4 +42,6 @@ app.delete('/todo', async (req, res) => {
     res.send(await todosItem.find({}))
 })
 
-app.listen(port)
+app.listen(port, ()=>{
+    console.log(`Listening on port http://localhost:${port}`)
+})
