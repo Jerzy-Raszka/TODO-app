@@ -7,7 +7,7 @@ app.use(express.json())
 
 app.use(function (req, res, next) {
 
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:63342');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     next();
@@ -23,7 +23,6 @@ const todosItem = mongoose.model('todosItem', todoSchema);
 
 mongoose.connect('mongodb+srv://Jirru:eQNToZhbNvEtI1cB@cluster0.hibixil.mongodb.net/ToDo?retryWrites=true&w=majority&appName=Cluster0')
 
-
 app.get('/todo', async (req, res) => {
     res.send(await todosItem.find({}))
 });
@@ -34,6 +33,7 @@ app.post('/todo', async (req, res) => {
 });
 
 app.put('/todo', async (req, res) => {
+    console.log(req.body);
     await todosItem.findByIdAndUpdate({_id: req.body._id},{name: req.body.name, status: req.body.status})
     res.send(await todosItem.find({}))
 })
