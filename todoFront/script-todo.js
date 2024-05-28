@@ -51,7 +51,6 @@ const putData = (_id) => {
 const deleteItem = (_id) => {
     const index = globalData.findIndex(x => x._id === _id);
     globalData.splice(index, 1);
-    console.log(globalData)
     document.getElementById(_id + 'div').remove();
     return fetch('http://localhost:3000/todo', {
         method: 'DELETE',
@@ -61,4 +60,23 @@ const deleteItem = (_id) => {
         body: JSON.stringify({_id: _id})
     }).then(response => response.json())
         .then(response => console.log(response))
+}
+
+const newItem = () => {
+    console.log(document.getElementById("newToDoItem").value)
+    const newItem = {name: document.getElementById("newToDoItem").value, status: false};
+    return fetch('http://localhost:3000/todo', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newItem)
+    }).then(response => response.json())
+        .then(data => {
+            globalData.push(data)
+            console.log(globalData)
+            const markup = `<div id='${data._id + 'div'}'><input type="text" id='${data._id + 'name'}' value='${data.name}' onblur="updateName('${data._id}')"/><input type="checkbox" id='${data._id}' onchange="updateStatus('${data._id}')"/><button onclick="deleteItem('${data._id}')">Delete</button></div>`;
+            document.getElementById('todoItems').insertAdjacentHTML('beforeend', markup);
+        })
+
 }
